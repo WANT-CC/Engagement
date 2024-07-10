@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Focus Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        video {
+            width: 80%;
+            margin-top: 20px;
+        }
+        input[type="file"] {
+            margin-top: 20px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Focus Analysis</h1>
+    <input type="file" id="videoUpload" accept="video/*">
+    <video id="videoPlayer" controls></video>
+    <div id="result"></div>
+    <script>
+        document.getElementById('videoUpload').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const videoPlayer = document.getElementById('videoPlayer');
+            const result = document.getElementById('result');
+
+            if (file) {
+                const url = URL.createObjectURL(file);
+                videoPlayer.src = url;
+
+                // 这里你可以调用你的神经网络模型进行视频分析
+                // 例如：result.innerHTML = analyzeVideo(file);
+                result.innerHTML = "Analysis result will be displayed here.";
+            }
+        });
+
+        // 示例：假设你有一个 JavaScript 函数来分析视频
+        // function analyzeVideo(file) {
+        //     // 你的神经网络分析代码
+        //     return "Focus analysis result.";
+        // }
+    </script>
+</body>
+</html>
